@@ -40,4 +40,26 @@ class Client
     end
     ordered_clients
   end
+
+  define_method(:update) do |attributes|
+    @client_name = attributes.fetch(:client_name, @client_name)
+    @stylist_id = attributes.fetch(:stylist_id, @stylist_id)
+    @id = self.id()
+    DB.exec("UPDATE books SET client_name = '#{@client_name}', stylist_id = '#{@stylist_id}' WHERE id = #{@id};")
+  end
+
+  define_method(:delete) do
+    @id = self.id()
+    DB.exec("DELETE FROM clients WHERE id = #{@id};")
+  end
+
+  define_singleton_method(:find) do |id|
+    found_client = nil
+    Client.all().each() do |client|
+      if client.id().==(id)
+        found_client = client
+      end
+    end
+    found_client
+  end
 end

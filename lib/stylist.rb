@@ -40,7 +40,6 @@ class Stylist
     @stylist_name = attributes.fetch(:stylist_name,  @stylist_name)
     @id = self.id()
     DB.exec("UPDATE stylists SET stylist_name = '#{@stylist_name}' WHERE id = #{@id};")
-    binding.pry
   end
 
   define_method(:delete) do

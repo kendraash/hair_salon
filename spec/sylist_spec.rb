@@ -31,3 +31,13 @@ describe("#save") do
     expect(Stylist.all()).to(eq([stylist]))
   end
 end
+
+describe(".find") do
+  it("lets you search all the stylist to find one by ID") do
+    stylist1 = Stylist.new({:stylist_name => "Kendra"})
+    stylist1.save()
+    expect(Stylist.find((stylist1.id()))).to(eq(stylist1))
+
+  end
+
+end

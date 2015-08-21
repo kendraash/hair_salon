@@ -1,1 +1,25 @@
 <h1>Clients</h1>
+
+<ul>
+  <% @clients.each() do |client| %>
+    <li><a href="/clients/<%= client.id %>"> <%= client.client_name() %> </a></li>
+  <% end %>
+</ul>
+
+
+<h3>Add a Client</h3>
+<form action ="/clients/new" method="post">
+  <label for="client_name">Name:</label>
+  <input type="text" name="client_name" id="client_name">
+  <br>
+  <label for="stylist_id">Choose your Stylist from the list:</label>
+  <select id='stylist_id' name='stylist_id' type='text'>
+    <% @stylists.each() do |stylist| %>
+    <option value="<%= stylist.id()%>"> <%= stylist.stylist_name() %> </option>
+    <% end %>
+  </select>
+  <br>
+  <button type="submit">Add new Client!</button>
+</form>
+
+<a href="/">Home</a>

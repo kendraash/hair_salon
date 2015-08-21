@@ -1,0 +1,24 @@
+<h1>Client: <%= @client.client_name() %></h1>
+<h3>Stylist: <%= Stylist.find(@client.stylist_id()).stylist_name %></h3>
+
+<h3>Update Client Info</h3>
+<form action="/clients/<%= @client.id() %>" method="post">
+
+  <input type="hidden" name="_method" value="patch">
+
+  <label for="client_name">New Name</label>
+  <input type="text" name="client_name" id="client_name">
+
+  <button type="submit">Edit client</button>
+
+</form>
+
+<h3>Delete Client</h3>
+
+<form action="/clients/<%= @client.id() %>" method="post">
+  <input type="hidden" name="_method" value="delete">
+  <button type="submit">Delete</button>
+</form>
+
+<a href="/clients">Back to list of clients</a><br>
+<a href="/">Home</a>

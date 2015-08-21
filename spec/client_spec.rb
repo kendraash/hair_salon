@@ -15,3 +15,11 @@ end
       expect(Client.all()).to(eq([]))
     end
   end
+
+  describe("#save") do
+  it("adds a client to the array of saved clients") do
+    client = Client.new({:client_name => "Molly", :id => 1, :stylist_id => 1})
+    client.save()
+    expect(Client.all()).to(eq([client]))
+  end
+end

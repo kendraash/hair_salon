@@ -23,4 +23,8 @@ class Client
     end
     clients
   end
+
+  define_method(:save) do
+  DB.exec("INSERT INTO clients (client_name, id, stylist_id) VALUES ('#{@client_name}', #{@id}, #{stylist_id});")
+end
 end

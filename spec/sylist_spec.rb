@@ -48,4 +48,14 @@ describe(Stylist) do
       expect(Stylist.find(id)).to(eq(nil))
     end
   end
+
+  describe("#clients") do
+    it("pull out clients based on a specific sylist id") do
+      test_stylist = Stylist.new({:stylist_name => 'Kendra'})
+      test_stylist.save()
+      test_client = Client.new({:client_name => 'Erica', :stylist_id => test_stylist.id()})
+      test_client.save()
+      expect(test_stylist.clients()).to(eq([test_client]))
+    end
+  end
 end
